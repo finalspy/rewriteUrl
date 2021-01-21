@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-   <title>Index</title>
+   <title>Main</title>
 
    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
    <META HTTP-EQUIV="Expires" CONTENT="-1">
@@ -20,8 +20,7 @@
 
       .container {
          display: grid;
-         grid-template-columns: 80px 152px 152px;
-         grid-template-rows: 22px 22px 22px 22px 22px;
+         grid-template-columns: 80px 310px;
          grid-gap: .5rem;
          height: 130px;
          margin: 0 auto;
@@ -34,7 +33,7 @@
 
       .container>div.header {
          color: darkslateblue;
-         grid-column: span 3;
+         grid-column: span 2;
       }
 
       .container>div.title{
@@ -50,8 +49,7 @@
       }
 
       img{ 
-         width:100%;
-         height: 22px
+         width:100%
       }
       button{
          margin: 0 auto;
@@ -71,19 +69,15 @@
 
 <body>
    <div class="container">
-      <div class="header">Current URL : <span>index.html</span></div>
-      <div class="title">links</div>
-      <div class="content"><a href="/absolute">/absolute</a><span id="abslink"></span></div>
-      <div class="content"><a href="relative">relative</a><span id="rellink"></span></div>
-      <div class="title">images</div>
-      <div class="content"><img src="/img/bg.png"/></div>
-      <div class="content"><img src="img/bg.png"/></div>
-      <div class="title">css</div>
-      <div class="content imgabs">.imgabs</div>
-      <div class="content imgrel">.imgrel</div>
-      <div class="title">js  [<span id="times">0</span>]</div>
-      <div class="content"><button onclick="absolute()">Click me</button></div>
-      <div class="content"><button onclick="relative()">Click me</button></div>
+      <div class="header">Current URL : <span>main.html</span></div>
+      <div class="title">App1</div>
+      <div class="content"><span id="link1"></span><a href="../8081/">8081 - no rewrite - no path</a></div>
+      <div class="title">App2</div>
+      <div class="content"><span id="link2"></span><a href="../8082/">8082 - rewrite    - no path</a></div>
+      <div class="title">App3</div>
+      <div class="content"><span id="link3"></span><a href="../8083/">8083 - no rewrite - base_path</a></div>
+      <div class="title">App4</div>
+      <div class="content"><span id="link4"></span><a href="../8084/">8084 - rewrite    - base_path</a></div>
    </div>
 
    <script>
@@ -97,8 +91,10 @@
             el.removeClass("ok").addClass("ko");
          });
       }
-      checkUrl("/absolute","abslink");
-      checkUrl("relative","rellink");
+      checkUrl("../8081/","link1");
+      checkUrl("../8082/","link2");
+      checkUrl("../8083/","link3");
+      checkUrl("../8084/","link4");
 
    </script>
 
