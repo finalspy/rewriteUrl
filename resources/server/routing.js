@@ -11,11 +11,11 @@ router.get("/index",function(req,res){
 });
 
 router.get("/absolute",function(req,res){
-  res.sendFile(path + "path.absolute.html");
+  res.sendFile(path + "index.html");
 });
 
 router.get("/relative",function(req,res){
-  res.sendFile(path + "path.relative.html");
+  res.sendFile(path + "index.html");
 });
 
 // Route pages under basePath

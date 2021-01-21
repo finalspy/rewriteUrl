@@ -1,0 +1,7 @@
+/* This file references styles specific to absolute pages */
+/* reference image absolute */ 
+div.imgabs{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(/img/bg.png);
+}
