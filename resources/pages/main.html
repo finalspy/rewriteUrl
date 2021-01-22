@@ -2,102 +2,121 @@
 <html lang="en">
 
 <head>
-   <title>Main</title>
+    <title>Main</title>
 
-   <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
-   <META HTTP-EQUIV="Expires" CONTENT="-1">
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Expires" CONTENT="-1">
 
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-   <link href="/css/absolute.css" rel="stylesheet">
-   <link href="css/relative.css" rel="stylesheet">
-   <style>
-      body{
-         padding:20px;
-         font-family: 'Courier New', Courier, monospace;
-      }
+    <link href="/css/absolute.css" rel="stylesheet">
+    <link href="css/relative.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        #container {
+            display: grid;
+            grid-template-columns: 80px 500px;
+            grid-auto-rows: 22px;
+            grid-gap: .5rem;
+            margin: 0 auto;
+            width: min-content
+        }
+        
+        #container>div {
+            background-color: #88b7fdab;
+        }
+        
+        #container>div.header {
+            color: darkslateblue;
+            grid-column: span 2;
+        }
+        
+        #container>div.title {
+            color: #fff;
+            background-color: darkslateblue;
+            font-style: italic;
+            font-variant: all-small-caps;
+        }
+        
+        #container>div.header,
+        #container>div.title {
+            font-weight: bold;
+            padding-left: 4px
+        }
+        
+        #container>div.ok:before {
+            content: "\2714";
+            font-size: small;
+        }
+        
+        #container>div.ok {
+            margin-left: 4px;
+            color: darkgreen;
+            background-color: #b4fba063;
+        }
+        
+        #container>div.ko:before {
+            content: "\2718";
+            font-size: small;
+        }
+        
+        #container>div.ko {
+            margin-left: 4px;
+            color: darkred;
+            background-color: #fff6f6
+        }
+        
+        img {
+            width: 100%;
+            height: 22px
+        }
+        
+        button {
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
 
-      #container {
-         display: grid;
-         grid-template-columns: 80px 310px;
-         grid-gap: .5rem;
-         height: 130px;
-         margin: 0 auto;
-         width: min-content
-      }
-
-      #container>div{
-         background-color: #88b7fdab;
-      }
-
-      #container>div.header {
-         color: darkslateblue;
-         grid-column: span 2;
-      }
-
-      #container>div.title{
-         color: #fff;
-         background-color: darkslateblue;
-         font-style: italic;
-         font-variant: all-small-caps;
-      }
-
-      #container>div.header, #container>div.title{
-        font-weight: bold;
-         padding-left: 4px
-      }
-
-      #container>div.ok:before{content:" \2714";}
-      #container>div.ok{margin-left: 4px; color: darkgreen;background-color: #b4fba063;}
-      #container>div.ko:before{content:" \2718";}
-      #container>div.ko{margin-left: 4px; color: darkred;background-color: #fff6f6}
-
-      img{ 
-         width:100%
-      }
-      button{
-         margin: 0 auto;
-         display: block;
-      }
-
-   </style>
-
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-   <script src="/js/absolute.js"></script>
-   <script src="js/relative.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/js/absolute.js"></script>
+    <script src="js/relative.js"></script>
 </head>
 
 <body>
-   <div id="container">
-      <div class="header">Current URL : <span>main.html</span></div>
-      <div class="title">App1</div>
-      <div class="content" id="link1"><a href="../8081/">8081 - no rewrite - no path</a></div>
-      <div class="title">App2</div>
-      <div class="content" id="link2"><a href="../8082/">8082 - rewrite    - no path</a></div>
-      <div class="title">App3</div>
-      <div class="content" id="link3"><a href="../8083/">8083 - no rewrite - base_path</a></div>
-      <div class="title">App4</div>
-      <div class="content" id="link4"><a href="../8084/">8084 - rewrite    - base_path</a></div>
-   </div>
+    <div id="container">
+        <div class="header">Current URL : <span>main.html</span></div>
+        <div class="title">App1</div>
+        <div class="content" id="link1"><a href="../8081/">8081 - no rewrite - no path</a></div>
+        <div class="title">App2</div>
+        <div class="content" id="link2"><a href="../8082/">8082 - rewrite - no path</a></div>
+        <div class="title">App3</div>
+        <div class="content" id="link3"><a href="../8083/">8083 - no rewrite - base_path</a></div>
+        <div class="title">App4</div>
+        <div class="content" id="link4"><a href="../8084/">8084 - rewrite - base_path</a></div>
+    </div>
 
-   <script>
-      // Place here script common to all pages 
-      $(".header>span").text(window.location.pathname)
-      function checkUrl(url, id){
-         let el = $("#"+id);
-         $.get(url).done(function() {
-            el.removeClass("ko").addClass("ok");
-         }).fail(function () {
-            el.removeClass("ok").addClass("ko");
-         });
-      }
-      checkUrl("../8081/","link1");
-      checkUrl("../8082/","link2");
-      checkUrl("../8083/","link3");
-      checkUrl("../8084/","link4");
+    <script>
+        // Place here script common to all pages 
+        $(".header>span").text(window.location.pathname)
 
-   </script>
+        function checkUrl(url, id) {
+            let el = $("#" + id);
+            $.get(url).done(function() {
+                el.removeClass("ko").addClass("ok");
+            }).fail(function() {
+                el.removeClass("ok").addClass("ko");
+            });
+        }
+        checkUrl("../8081/", "link1");
+        checkUrl("../8082/", "link2");
+        checkUrl("../8083/", "link3");
+        checkUrl("../8084/", "link4");
+    </script>
 
 </body>
 

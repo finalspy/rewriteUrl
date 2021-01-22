@@ -1,6 +1,9 @@
 /* This file references styles specific to relative pages */
+
+
 /* reference image relative */
-div.imgrel{
+
+div.imgrel {
     background-size: cover;
     background-repeat: no-repeat;
     background-image: url(../img/bg.png);

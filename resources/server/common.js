@@ -6,5 +6,5 @@ app.use(basePath, express.static(__dirname + '/static/'));
 
 // Listen to connections on port ... 
 app.listen(port, function () {
-  console.log( name + ' is running on port [:' + port + '] with basepath of [' + basePath + '] !');
+  console.log(name + ' is running on port [:' + port + '] with basepath of [' + basePath + '] !');
 })
