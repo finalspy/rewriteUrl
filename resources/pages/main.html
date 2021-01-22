@@ -13,21 +13,21 @@
    <link href="/css/absolute.css" rel="stylesheet">
    <link href="css/relative.css" rel="stylesheet">
    <style>
-      body{
-         padding:20px;
+      body {
+         padding: 20px;
          font-family: 'Courier New', Courier, monospace;
       }
 
       #container {
          display: grid;
          grid-template-columns: 80px 310px;
+         grid-auto-rows: 22px;
          grid-gap: .5rem;
-         height: 130px;
          margin: 0 auto;
          width: min-content
       }
 
-      #container>div{
+      #container>div {
          background-color: #88b7fdab;
       }
 
@@ -36,31 +36,47 @@
          grid-column: span 2;
       }
 
-      #container>div.title{
+      #container>div.title {
          color: #fff;
          background-color: darkslateblue;
          font-style: italic;
          font-variant: all-small-caps;
       }
 
-      #container>div.header, #container>div.title{
-        font-weight: bold;
+      #container>div.header,
+      #container>div.title {
+         font-weight: bold;
          padding-left: 4px
       }
 
-      #container>div.ok:before{content:" \2714";}
-      #container>div.ok{margin-left: 4px; color: darkgreen;background-color: #b4fba063;}
-      #container>div.ko:before{content:" \2718";}
-      #container>div.ko{margin-left: 4px; color: darkred;background-color: #fff6f6}
-
-      img{ 
-         width:100%
+      #container>div.ok:before {
+         content: " \2714";
       }
-      button{
+
+      #container>div.ok {
+         margin-left: 4px;
+         color: darkgreen;
+         background-color: #b4fba063;
+      }
+
+      #container>div.ko:before {
+         content: " \2718";
+      }
+
+      #container>div.ko {
+         margin-left: 4px;
+         color: darkred;
+         background-color: #fff6f6
+      }
+
+      img {
+         width: 100%
+      }
+
+      button {
          margin: 0 auto;
          display: block;
       }
-
    </style>
 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -74,28 +90,28 @@
       <div class="title">App1</div>
       <div class="content" id="link1"><a href="../8081/">8081 - no rewrite - no path</a></div>
       <div class="title">App2</div>
-      <div class="content" id="link2"><a href="../8082/">8082 - rewrite    - no path</a></div>
+      <div class="content" id="link2"><a href="../8082/">8082 - rewrite - no path</a></div>
       <div class="title">App3</div>
       <div class="content" id="link3"><a href="../8083/">8083 - no rewrite - base_path</a></div>
       <div class="title">App4</div>
-      <div class="content" id="link4"><a href="../8084/">8084 - rewrite    - base_path</a></div>
+      <div class="content" id="link4"><a href="../8084/">8084 - rewrite - base_path</a></div>
    </div>
 
    <script>
       // Place here script common to all pages 
       $(".header>span").text(window.location.pathname)
-      function checkUrl(url, id){
-         let el = $("#"+id);
-         $.get(url).done(function() {
+      function checkUrl(url, id) {
+         let el = $("#" + id);
+         $.get(url).done(function () {
             el.removeClass("ko").addClass("ok");
          }).fail(function () {
             el.removeClass("ok").addClass("ko");
          });
       }
-      checkUrl("../8081/","link1");
-      checkUrl("../8082/","link2");
-      checkUrl("../8083/","link3");
-      checkUrl("../8084/","link4");
+      checkUrl("../8081/", "link1");
+      checkUrl("../8082/", "link2");
+      checkUrl("../8083/", "link3");
+      checkUrl("../8084/", "link4");
 
    </script>
 
