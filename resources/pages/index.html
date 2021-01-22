@@ -18,7 +18,7 @@
          font-family: 'Courier New', Courier, monospace;
       }
 
-      .container {
+      #container {
          display: grid;
          grid-template-columns: 80px 250px 250px;
          grid-template-rows: 22px 22px 22px 22px 22px;
@@ -28,26 +28,31 @@
          width: min-content
       }
 
-      .container>div{
+      #container>div{
          background-color: #88b7fdab;
       }
 
-      .container>div.header {
+      #container>div.header {
          color: darkslateblue;
          grid-column: span 3;
       }
 
-      .container>div.title{
+      #container>div.title{
          color: #fff;
          background-color: darkslateblue;
          font-style: italic;
          font-variant: all-small-caps;
       }
 
-      .container>div.header, .container>div.title{
+      #container>div.header, #container>div.title{
         font-weight: bold;
          padding-left: 4px
       }
+
+      #container>div.ok:before{content:"\2714";font-size: small;}
+      #container>div.ok{margin-left: 4px; color: darkgreen;background-color: #b4fba063;}
+      #container>div.ko:before{content:"\2718";}
+      #container>div.ko{margin-left: 4px; color: darkred;background-color: #fff6f6}
 
       img{ 
          width:100%;
@@ -58,10 +63,7 @@
          display: block;
       }
 
-      .ok:before{content:" \2714";}
-      .ok{margin-left: 4px; color: darkgreen;background-color: #f6ff6f;}
-      .ko:before{content:" \2718";}
-      .ko{margin-left: 4px; color: darkred;background-color: #fff6f6}
+      
    </style>
 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -70,11 +72,11 @@
 </head>
 
 <body>
-   <div class="container">
+   <div id="container">
       <div class="header">Current URL : <span>index.html</span></div>
       <div class="title">links</div>
-      <div class="content"><a href="/absolute">/absolute</a><span id="abslink"></span></div>
-      <div class="content"><a href="relative">relative</a><span id="rellink"></span></div>
+      <div class="content" id="abslink"><a href="/absolute">/absolute</a></div>
+      <div class="content" id="rellink"><a href="relative">relative</a></div>
       <div class="title">images</div>
       <div class="content"><img src="/img/bg.png"/></div>
       <div class="content"><img src="img/bg.png"/></div>

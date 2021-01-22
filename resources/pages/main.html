@@ -18,7 +18,7 @@
          font-family: 'Courier New', Courier, monospace;
       }
 
-      .container {
+      #container {
          display: grid;
          grid-template-columns: 80px 310px;
          grid-gap: .5rem;
@@ -27,26 +27,31 @@
          width: min-content
       }
 
-      .container>div{
+      #container>div{
          background-color: #88b7fdab;
       }
 
-      .container>div.header {
+      #container>div.header {
          color: darkslateblue;
          grid-column: span 2;
       }
 
-      .container>div.title{
+      #container>div.title{
          color: #fff;
          background-color: darkslateblue;
          font-style: italic;
          font-variant: all-small-caps;
       }
 
-      .container>div.header, .container>div.title{
+      #container>div.header, #container>div.title{
         font-weight: bold;
          padding-left: 4px
       }
+
+      #container>div.ok:before{content:" \2714";}
+      #container>div.ok{margin-left: 4px; color: darkgreen;background-color: #b4fba063;}
+      #container>div.ko:before{content:" \2718";}
+      #container>div.ko{margin-left: 4px; color: darkred;background-color: #fff6f6}
 
       img{ 
          width:100%
@@ -56,10 +61,6 @@
          display: block;
       }
 
-      .ok:before{content:" \2714";}
-      .ok{margin-left: 4px; color: darkgreen;background-color: #f6ff6f;}
-      .ko:before{content:" \2718";}
-      .ko{margin-left: 4px; color: darkred;background-color: #fff6f6}
    </style>
 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -68,16 +69,16 @@
 </head>
 
 <body>
-   <div class="container">
+   <div id="container">
       <div class="header">Current URL : <span>main.html</span></div>
       <div class="title">App1</div>
-      <div class="content"><span id="link1"></span><a href="../8081/">8081 - no rewrite - no path</a></div>
+      <div class="content" id="link1"><a href="../8081/">8081 - no rewrite - no path</a></div>
       <div class="title">App2</div>
-      <div class="content"><span id="link2"></span><a href="../8082/">8082 - rewrite    - no path</a></div>
+      <div class="content" id="link2"><a href="../8082/">8082 - rewrite    - no path</a></div>
       <div class="title">App3</div>
-      <div class="content"><span id="link3"></span><a href="../8083/">8083 - no rewrite - base_path</a></div>
+      <div class="content" id="link3"><a href="../8083/">8083 - no rewrite - base_path</a></div>
       <div class="title">App4</div>
-      <div class="content"><span id="link4"></span><a href="../8084/">8084 - rewrite    - base_path</a></div>
+      <div class="content" id="link4"><a href="../8084/">8084 - rewrite    - base_path</a></div>
    </div>
 
    <script>
