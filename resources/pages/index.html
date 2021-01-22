@@ -2,107 +2,123 @@
 <html lang="en">
 
 <head>
-   <title>Index</title>
+    <title>Index</title>
 
-   <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
-   <META HTTP-EQUIV="Expires" CONTENT="-1">
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Expires" CONTENT="-1">
 
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-   <link href="/css/absolute.css" rel="stylesheet">
-   <link href="css/relative.css" rel="stylesheet">
-   <style>
-      body{
-         padding:20px;
-         font-family: 'Courier New', Courier, monospace;
-      }
+    <link href="/css/absolute.css" rel="stylesheet">
+    <link href="css/relative.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        #container {
+            display: grid;
+            grid-template-columns: 80px 250px 250px;
+            grid-auto-rows: 22px;
+            grid-gap: .5rem;
+            margin: 0 auto;
+            width: min-content
+        }
+        
+        #container>div {
+            background-color: #88b7fdab;
+        }
+        
+        #container>div.header {
+            color: darkslateblue;
+            grid-column: span 3;
+        }
+        
+        #container>div.title {
+            color: #fff;
+            background-color: darkslateblue;
+            font-style: italic;
+            font-variant: all-small-caps;
+        }
+        
+        #container>div.header,
+        #container>div.title {
+            font-weight: bold;
+            padding-left: 4px
+        }
+        
+        #container>div.ok:before {
+            content: "\2714";
+            font-size: small;
+        }
+        
+        #container>div.ok {
+            margin-left: 4px;
+            color: darkgreen;
+            background-color: #b4fba063;
+        }
+        
+        #container>div.ko:before {
+            content: "\2718";
+            font-size: small;
+        }
+        
+        #container>div.ko {
+            margin-left: 4px;
+            color: darkred;
+            background-color: #fff6f6
+        }
+        
+        img {
+            width: 100%;
+            height: 22px
+        }
+        
+        button {
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
 
-      #container {
-         display: grid;
-         grid-template-columns: 80px 250px 250px;
-         grid-template-rows: 22px 22px 22px 22px 22px;
-         grid-gap: .5rem;
-         height: 130px;
-         margin: 0 auto;
-         width: min-content
-      }
-
-      #container>div{
-         background-color: #88b7fdab;
-      }
-
-      #container>div.header {
-         color: darkslateblue;
-         grid-column: span 3;
-      }
-
-      #container>div.title{
-         color: #fff;
-         background-color: darkslateblue;
-         font-style: italic;
-         font-variant: all-small-caps;
-      }
-
-      #container>div.header, #container>div.title{
-        font-weight: bold;
-         padding-left: 4px
-      }
-
-      #container>div.ok:before{content:"\2714";font-size: small;}
-      #container>div.ok{margin-left: 4px; color: darkgreen;background-color: #b4fba063;}
-      #container>div.ko:before{content:"\2718";}
-      #container>div.ko{margin-left: 4px; color: darkred;background-color: #fff6f6}
-
-      img{ 
-         width:100%;
-         height: 22px
-      }
-      button{
-         margin: 0 auto;
-         display: block;
-      }
-
-      
-   </style>
-
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-   <script src="/js/absolute.js"></script>
-   <script src="js/relative.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/js/absolute.js"></script>
+    <script src="js/relative.js"></script>
 </head>
 
 <body>
-   <div id="container">
-      <div class="header">Current URL : <span>index.html</span></div>
-      <div class="title">links</div>
-      <div class="content" id="abslink"><a href="/absolute">/absolute</a></div>
-      <div class="content" id="rellink"><a href="relative">relative</a></div>
-      <div class="title">images</div>
-      <div class="content"><img src="/img/bg.png"/></div>
-      <div class="content"><img src="img/bg.png"/></div>
-      <div class="title">css</div>
-      <div class="content imgabs">.imgabs</div>
-      <div class="content imgrel">.imgrel</div>
-      <div class="title">js  [<span id="times">0</span>]</div>
-      <div class="content"><button onclick="absolute()">Click me</button></div>
-      <div class="content"><button onclick="relative()">Click me</button></div>
-   </div>
+    <div id="container">
+        <div class="header">Current URL : <span>index.html</span></div>
+        <div class="title">links</div>
+        <div class="content" id="abslink"><a href="/absolute">/absolute</a></div>
+        <div class="content" id="rellink"><a href="relative">relative</a></div>
+        <div class="title">images</div>
+        <div class="content"><img src="/img/bg.png" /></div>
+        <div class="content"><img src="img/bg.png" /></div>
+        <div class="title">css</div>
+        <div class="content imgabs">.imgabs</div>
+        <div class="content imgrel">.imgrel</div>
+        <div class="title">js [<span id="times">0</span>]</div>
+        <div class="content"><button onclick="absolute()">Click me</button></div>
+        <div class="content"><button onclick="relative()">Click me</button></div>
+    </div>
 
-   <script>
-      // Place here script common to all pages 
-      $(".header>span").text(window.location.pathname)
-      function checkUrl(url, id){
-         let el = $("#"+id);
-         $.get(url).done(function() {
-            el.removeClass("ko").addClass("ok");
-         }).fail(function () {
-            el.removeClass("ok").addClass("ko");
-         });
-      }
-      checkUrl("/absolute","abslink");
-      checkUrl("relative","rellink");
+    <script>
+        // Place here script common to all pages 
+        $(".header>span").text(window.location.pathname)
 
-   </script>
+        function checkUrl(url, id) {
+            let el = $("#" + id);
+            $.get(url).done(function() {
+                el.removeClass("ko").addClass("ok");
+            }).fail(function() {
+                el.removeClass("ok").addClass("ko");
+            });
+        }
+        checkUrl("/absolute", "abslink");
+        checkUrl("relative", "rellink");
+    </script>
 
 </body>
 
